@@ -8,6 +8,8 @@ import AddIncome from "./pages/income/AddIncome";
 import AddExpense from "./pages/expense/AddExpense";
 import NotAdmin from "./components/NotAdmin";
 import DashboardData from "./pages/users/DashboardData";
+import AdminRoute from "./components/Navigation/AdminRoute";
+import ExpensesList from "./pages/expense/ExpensesList";
 // import Navbar from "./components/Navigation/Navbar";
 function App() {
   return (
@@ -17,10 +19,13 @@ function App() {
           <Route path="/" element={<HomeA />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/dashboard" element={<DashboardData />} />
+          <Route path="/*" element={<AdminRoute />}>
+            <Route path="dashboard" element={<DashboardData />} />
+          </Route>
           <Route path="/not-found" element={<NotAdmin />} />
           <Route path="/*" element={<ProtectedRoute />}>
             <Route path="profile" element={<Profile />} />
+            <Route path="expenses" element={<ExpensesList />} />
             <Route path="add-income" element={<AddIncome />} />
             <Route path="add-expense" element={<AddExpense />} />
           </Route>

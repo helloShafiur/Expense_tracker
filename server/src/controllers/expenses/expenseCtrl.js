@@ -3,9 +3,14 @@ const Expense = require("../../model/Expense");
 
 //Create an instance of Expense object
 const createExpCtrl = expressAsyncHandler(async (req, res) => {
-  const { title, amount, description, user } = req.body;
+  const { title, amount, description } = req.body;
   try {
-    const expense = await Expense.create({ title, amount, description, user });
+    const expense = await Expense.create({
+      title,
+      amount,
+      description,
+      user: req?.user?._id,
+    });
     res.json(expense);
   } catch (error) {
     res.json(error);

@@ -29,7 +29,21 @@ export const loginUserAction = createAsyncThunk(
     }
   }
 );
-
+//Logout Action
+export const logout = createAsyncThunk(
+  "user/logout",
+  async (payload, { rejectWithValue, getState, dispatch }) => {
+    try {
+      //Remove user info from Localstorage
+      localStorage.removeItem("userInfo");
+    } catch (error) {
+      if (!error?.response) {
+        throw error;
+      }
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
 //Register Action
 export const registerUserAction = createAsyncThunk(
   "users/register",
@@ -64,7 +78,7 @@ const userLoginFromLocalStorage = localStorage.getItem("userInfo")
 const useSlices = createSlice({
   name: "users",
   initialState: {
-    userAuth: userLoginFromLocalStorage, 
+    userAuth: userLoginFromLocalStorage,
   },
   extraReducers: (builder) => {
     //Handle Pending State[Login Action]
