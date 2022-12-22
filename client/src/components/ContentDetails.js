@@ -1,7 +1,7 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 const ContentDetails = ({ item }) => {
-  console.log(item);
+  const navigate = useNavigate();
   return (
     <>
       <tr className="align-middle text-dark">
@@ -16,6 +16,15 @@ const ContentDetails = ({ item }) => {
         <td className="p-6">
           <button
             // onClick={() => navigate(history, "edit", item)}
+            onClick={() =>
+              //   navigate({
+              //     pathname: `/edit-expense/`,
+              //     state: {
+              //       expense: item,
+              //     },
+              //   })
+              navigate("/edit-expense", { state: { expense: item } })
+            }
             className="badge bg-success-light text-success"
           >
             <svg

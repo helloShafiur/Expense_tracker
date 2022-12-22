@@ -10,6 +10,7 @@ import NotAdmin from "./components/NotAdmin";
 import DashboardData from "./pages/users/DashboardData";
 import AdminRoute from "./components/Navigation/AdminRoute";
 import ExpensesList from "./pages/expense/ExpensesList";
+import EditExpense from "./pages/expense/EditExpense";
 // import Navbar from "./components/Navigation/Navbar";
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/*" element={<ProtectedRoute />}>
             <Route path="profile" element={<Profile />} />
             <Route path="expenses" element={<ExpensesList />} />
+            <Route path="edit-expense" element={<EditExpense />} />
             <Route path="add-income" element={<AddIncome />} />
             <Route path="add-expense" element={<AddExpense />} />
           </Route>
