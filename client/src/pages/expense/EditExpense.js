@@ -37,7 +37,7 @@ const EditExpense = () => {
   const expenseData = useSelector((state) => state?.expepnses);
   // console.log("expenseData", expenseData);
   const { loading, appErr, serverErr } = expenseData;
-  console.log(loading, appErr, serverErr);
+  console.log("Print: ",loading, appErr, serverErr);
 
   return (
     <section className="py-5 bg-secondary vh-100">
